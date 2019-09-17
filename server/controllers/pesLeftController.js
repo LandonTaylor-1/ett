@@ -1,16 +1,16 @@
-const Pes = require('../models/pesModel');
+const PesLeft = require('../models/pesLeftModel');
 
 exports.create = function create(req,res) {
     let item = {
-        position: req.body.position,
+        location: req.body.location,
         color: req.body.color
     };
-    let newPes = new Pes(item)
-    newPes.save();
+    let newPesLeft = new PesLeft(item)
+    newPesLeft.save();
 }
 
 exports.list = function list(req,res) {
-    Pes.find((e,v)=>{
+    PesLeft.find((e,v)=>{
         return res.json(v);
     });
 }

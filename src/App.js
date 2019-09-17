@@ -1,49 +1,37 @@
 import React from 'react';
-import './App.css';
-import './App.scss';
-import Color from './components/color';
+import View from './components/view'
+import ColorLeft from './containers/colorContainer/colorLeftContainer';
+import ColorRight from './containers/colorContainer/colorRightContainer';
+import LocationLeft from './containers/locationContainer/locationLeftContainer';
+import LocationRight from './containers/locationContainer/locationRightContainer';
+import ResultLeft from './containers/resultContainer/resultLeftContainer';
+import ResultRight from './containers/resultContainer/resultRightContainer';
 
 class App extends React.Component {
+  state = {
+    display: 0
+  }
 
   componentDidMount() {
 
   }
+
   render(){
+    // let content = null
+    // if (this.state.display === 0) {
+    //   content = 
+    // } else if (this.state.display === 1) {
+    //   content = 
+    // }
     return (
       <div>
-        <Color />
-        <div id="container-lefter">
-          <div id="container-left">
-            <div id="twelve-left" className="left"></div>
-            <div id="one-left" className="left"></div>
-            <div id="two-left" className="left"></div>
-            <div id="three-left" className="left"></div>
-            <div id="four-left" className="left"></div>
-            <div id="five-left" className="left"></div>
-            <div id="six-left" className="left"></div>
-            <div id="seven-left" className="left"></div>
-            <div id="eight-left" className="left"></div>
-            <div id="nine-left" className="left"></div>
-            <div id="ten-left" className="left"></div>
-            <div id="eleven-left" className="left"></div>
-          </div>
-        </div>
-        <div id="container-lefter">
-          <div id="container-right">
-            <div id="twelve-right" className="right"></div>
-            <div id="one-right" className="right"></div>
-            <div id="two-right" className="right"></div>
-            <div id="three-right" className="right"></div>
-            <div id="four-right" className="right"></div>
-            <div id="five-right" className="right"></div>
-            <div id="six-right" className="right"></div>
-            <div id="seven-right" className="right"></div>
-            <div id="eight-right" className="right"></div>
-            <div id="nine-right" className="right"></div>
-            <div id="ten-right" className="right"></div>
-            <div id="eleven-right" className="right"></div>
-          </div>
-        </div>
+        <View />
+        <ColorLeft />
+        <ColorRight />
+        <LocationLeft />
+        <LocationRight />
+        <ResultLeft />
+        <ResultRight />
       </div>
     );
   }

@@ -1,0 +1,15 @@
+#container-righter {
+    display: inline-block;
+    background-color: black;
+    align-items: center;
+    width: 340px;
+    height: 340px;
+    border: 1px white solid;
+}
+
+.right {
+    background-color: white;
+    height: 10px;
+    width: 20px;
+    border-radius: 15%;
+}

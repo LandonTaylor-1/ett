@@ -3,11 +3,13 @@ const mongoose = require('mongoose');
 const app = express();
 const bodyParser = require("body-parser");
 
-let pesRoutes = require('./routes/pesRoute');
+let pesLeftRoutes = require('./routes/pesLeftRoute');
+let pesRightRoutes = require('./routes/pesRightRoute');
 
 app.use(bodyParser.json());
 app.use(express.static("public"));
-app.use(pesRoutes);
+app.use(pesLeftRoutes);
+app.use(pesRightRoutes);
 
 mongoose.set("debug", true);
 mongoose.Promise = global.Promise;
