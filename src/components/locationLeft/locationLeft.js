@@ -9,8 +9,19 @@ function LocationLeft(props) {
     function selectLeft(e) {
         if(props.setLeft){
             props.setLeft(e.target.id);
+            // e.target.style = {
+            //     backgroundColor: 'green'
+            // }
         }
     }
+
+    // function go(e) {
+    //     if (e.target.children[!5]) {
+    //         e.target.children[5].style = {
+    //             backgroundColor: 'green'        
+    //         }
+    //     }
+    // }
     return(
         <div>
             <div id="container-lefter">

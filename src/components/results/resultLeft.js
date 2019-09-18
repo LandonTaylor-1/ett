@@ -7,7 +7,7 @@ function ResultLeft(props) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({location: props.locationLeft, color: props.colorLeft})
+            body: JSON.stringify({location: props.locationLeft, color: props.colorLeft || 'White'})
         })
         .then(res=>res.json())
         .catch(console.log)

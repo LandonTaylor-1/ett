@@ -26,32 +26,18 @@
         $rot: $rot + $angle;
       }
     }
-  }
+}
   
-  #container-left {
-      @include on-circle($item-count: 12, $circle-size: 320px, $item-size: 20px); 
-      margin: 1em auto 0;
-      
-      div {
+#container-right {
+    @include on-circle($item-count: 12, $circle-size: 320px, $item-size: 20px); 
+    margin: 1em auto 0;
+    
+    div {
         height: 10px;
         width: 20px;
         display: block; 
         max-width: 100%; 
         border-radius: 15%;
         transition: .15s;
-      }
-  }
-  
-  #container-right {
-      @include on-circle($item-count: 12, $circle-size: 320px, $item-size: 20px); 
-      margin: 1em auto 0;
-      
-      div {
-          height: 10px;
-          width: 20px;
-          display: block; 
-          max-width: 100%; 
-          border-radius: 15%;
-          transition: .15s;
-      }
-  }
+    }
+}
