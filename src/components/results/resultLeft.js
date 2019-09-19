@@ -1,23 +1,36 @@
 import React from 'react';
 
-function ResultLeft(props) {
-    function pesLeft() {
+class ResultLeft extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {display: []}
+        this.myRef = React.createRef()
+    }
+    pesLeft = () => {
         fetch('/pesleft', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({location: props.locationLeft, color: props.colorLeft || 'White'})
+            body: JSON.stringify({location: this.props.locationLeft, color: this.props.colorLeft || 'White'})
         })
         .then(res=>res.json())
         .catch(console.log)
+        let content = <div key={this.state.display.length + 1} ref={this.myRef} style={{backgroundColor: this.props.colorLeft}}>{this.state.display.length + 1} - {this.props.locationLeft} {this.props.colorLeft || "White"} </div>
+        const newContent = [content, ...this.state.display];
+        this.setState({
+            display: newContent
+        })
     }
-    return(
-        <div>
-            <div>{props.locationLeft} {props.colorLeft || "White"}</div>
-            <button onClick={pesLeft}>Send Left</button>
-        </div>
-    )
+    render(){
+        return(
+            <div>
+                <button onClick={this.pesLeft}>Send Left</button>
+                {/* <div>{this.props.locationLeft} {this.props.colorLeft || "White"}</div> */}
+                {this.state.display}
+            </div>
+        )
+    }
 }
 
 export default ResultLeft;

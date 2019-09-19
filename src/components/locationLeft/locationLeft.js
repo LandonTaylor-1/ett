@@ -3,21 +3,25 @@ import './locationLeft.css';
 import './locationLeft.scss';
 
 function LocationLeft(props) {
-    let style = {
-        backgroundColor: props.colorLeft
-    }
+    let style = {backgroundColor: props.colorLeft}
     function selectLeft(e) {
         if(props.setLeft){
             props.setLeft(e.target.id);
-            // e.target.style = {
-            //     backgroundColor: 'green'
-            // }
         }
     }
 
     // function go(e) {
-    //     if (e.target.children[!5]) {
+    //     if (e.target.children[5]) {
     //         e.target.children[5].style = {
+    //             backgroundColor: props.colorLeft        
+    //         }
+    //         e.target.children[4].style = {
+    //             backgroundColor: 'black'        
+    //         }
+    //         e.target.children[3].style = {
+    //             backgroundColor: 'green'        
+    //         }
+    //         e.target.children[2].style = {
     //             backgroundColor: 'green'        
     //         }
     //     }
@@ -26,7 +30,7 @@ function LocationLeft(props) {
         <div>
             <div id="container-lefter">
                 <div id="container-left">
-                    <div id="Left: 3 o'Clock" className="left" style={style} onClick={selectLeft}></div>
+                    <div id="Progress1" className="left" style={style} onClick={selectLeft}></div>
                     <div id="Left: 4 o'Clock" className="left" style={style} onClick={selectLeft}></div>
                     <div id="Left: 5 o'Clock" className="left" style={style} onClick={selectLeft}></div>
                     <div id="Left: 6 o'Clock" className="left" style={style} onClick={selectLeft}></div>
