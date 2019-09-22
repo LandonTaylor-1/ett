@@ -31,11 +31,11 @@ class App extends React.Component {
         <ColorLeft />
         <LocationLeftDropDown />
         <ColorRight />
-        <LocationLeft />
-        <LocationRight />
+        {/* <LocationLeft /> */}
         <ResultLeft />
         <ResultRight />
         <ClientViewLeft />
+        <LocationRight />
       </div>
     );
   }

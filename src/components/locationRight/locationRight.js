@@ -4,30 +4,29 @@ import './locationRight.scss';
 
 class LocationRight extends React.Component {
     state = {
-        style: {backgroundColor: this.props.colorRight},
-        pesStyle: {backgroundColor: this.props.colorRight}
+        pesViewLeft: this.props.pesViewLeft,
+        pes: ""
+    }
+    componentDidMount(){
+        fetch("/pesleft/last")
+            .then(res=>res.json())
+            .then((pes)=>this.setState({pes}))
     }
     render(){
-        // if (document.getElementById === this.props.locationLeftDropDown) {
-        //     this.state.style = this.state.pesStyle
-        // }
+        let leftEyeClient = this.state.pesViewLeft.map((view, i)=>{
+            return <div
+                key={i}
+                view={view}
+                id={view.id}
+                className={view.className}
+                style={view.id === this.state.pes.location ? {backgroundColor: this.state.pes.color} : {backgroundColor: 'black'}}
+            ></div>
+        })
+        console.log(JSON.stringify(this.state.pes.location))
         return(
-            <div>
-                <div id="container-righter">
-                    <div id="container-right">
-                        <div id="Right: 3 o'Clock" className="right" style={this.state.style}></div>
-                        <div id="Right: 4 o'Clock" className="right" style={this.state.style}></div>
-                        <div id="Right: 5 o'Clock" className="right" style={this.state.style}></div>
-                        <div id="Right: 6 o'Clock" className="right" style={this.state.style}></div>
-                        <div id="Right: 7 o'Clock" className="right" style={this.state.style}></div>
-                        <div id="Right: 8 o'Clock" className="right" style={this.state.style}></div>
-                        <div id="Right: 9 o'Clock" className="right" style={this.state.style}></div>
-                        <div id="Right: 10 o'Clock" className="right" style={this.state.style}></div>
-                        <div id="Right: 11 o'Clock" className="right" style={this.state.style}></div>
-                        <div id="Right: 12 o'Clock" className="right" style={this.state.style}></div>
-                        <div id="Right: 1 o'Clock" className="right" style={this.state.style}></div>
-                        <div id="Right: 2 o'Clock" className="right" style={this.state.style}></div>
-                    </div>
+            <div id="container-lefter">
+                <div id="container-left">
+                    {leftEyeClient}
                 </div>
             </div>
         )

@@ -4,8 +4,10 @@ import {setLocationRight} from '../../actions/index';
 
 function mapStateToProps(state) {
     return {
-        colorRight: state.colorRight,
-        locationLeftDropDown: state.locationLeftDropDown
+        // colorRight: state.colorRight,
+        // locationLeftDropDown: state.locationLeftDropDown,
+        pesViewLeft: state.pesViewLeft,
+
     }
 }
 

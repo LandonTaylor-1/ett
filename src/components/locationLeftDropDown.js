@@ -8,6 +8,7 @@ function LocationLeftDropDown(props) {
                     props.setLeft(e.target.value);
                 }
             }}>
+                <option>Choose a Position</option>
                 <option value="Left: 1 o'Clock">1 o'Clock</option>
                 <option value="Left: 2 o'Clock">2 o'Clock</option>
                 <option value="Left: 3 o'Clock">3 o'Clock</option>

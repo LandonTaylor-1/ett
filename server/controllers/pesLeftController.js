@@ -14,3 +14,9 @@ exports.list = function list(req,res) {
         return res.json(v);
     });
 }
+
+exports.show = function show(req, res) {
+    PesLeft.find((err, v)=>{
+        return res.json(v[v.length-1]);
+    });
+}

@@ -5,8 +5,8 @@ import './clientViewLeft.scss';
 class ClientViewLeft extends React.Component {
     state = {
         pesViewLeft: this.props.pesViewLeft,
-        colorLeft: this.props.colorLeft,
-        locationLeftDropDown: this.props.locationLeftDropDown
+        // colorLeft: this.props.colorLeft,
+        // locationLeftDropDown: this.props.locationLeftDropDown
     }
     // componentDidMount(){
     //     this.setState({
@@ -21,12 +21,16 @@ class ClientViewLeft extends React.Component {
     //     })
     // }
     go = ()=>{
-        // this.forceUpdate()
-        // this.setState({
-        //     colorLeft: this.props.colorLeft,
-        //     locationLeftDropDown: this.props.locationLeftDropDown
-        // })
-        // console.log(this.state.locationLeftDropDown)
+        fetch('/pesleft', {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({location: this.props.locationLeftDropDown, color: this.props.colorLeft || 'White'})
+        })
+        .then(res=>res.json())
+        .catch(console.log)
     }
     render(){
         let leftEyeClient = this.state.pesViewLeft.map((view, i)=>{
