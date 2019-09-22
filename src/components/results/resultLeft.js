@@ -21,6 +21,10 @@ class ResultLeft extends React.Component {
         this.setState({
             display: newContent
         })
+        if (this.props.setColorLeft){
+            this.props.setColorLeft(this.props.colorLeft);
+            // this.props.setLocationLeft(this.props.locationLeft);
+        }
     }
     render(){
         return(

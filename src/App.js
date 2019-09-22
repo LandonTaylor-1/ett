@@ -7,6 +7,7 @@ import LocationRight from './containers/locationContainer/locationRightContainer
 import ResultLeft from './containers/resultContainer/resultLeftContainer';
 import ResultRight from './containers/resultContainer/resultRightContainer';
 import ClientViewLeft from './containers/clientViewContainer/clientViewLeftContainer';
+import LocationLeftDropDown from './containers/locationLeftDropDownContainer';
 
 class App extends React.Component {
   state = {
@@ -28,6 +29,7 @@ class App extends React.Component {
       <div>
         <View />
         <ColorLeft />
+        <LocationLeftDropDown />
         <ColorRight />
         <LocationLeft />
         <LocationRight />

@@ -4,12 +4,13 @@ import {setLocationLeft} from '../../actions/index';
 
 function mapStateToProps(state) {
     return {
-        colorLeft: state.colorLeft
+        pesViewLeft: state.pesViewLeft
     }
 }
 
 const mapDispatchToProps = {
-    setLeft: setLocationLeft
+    setLeft: setLocationLeft,
+    // setLeftIKey: setLocationLeft
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LocationLeft);

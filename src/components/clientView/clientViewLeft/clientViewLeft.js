@@ -4,40 +4,46 @@ import './clientViewLeft.scss';
 
 class ClientViewLeft extends React.Component {
     state = {
-        style: {backgroundColor: 'black'}
+        pesViewLeft: this.props.pesViewLeft,
+        colorLeft: this.props.colorLeft,
+        locationLeftDropDown: this.props.locationLeftDropDown
     }
-    componentDidMount() {
-        this.setState({
-            style: {backgroundColor: this.props.colorLeft}
+    // componentDidMount(){
+    //     this.setState({
+    //         pesViewLeft: this.props.pesViewLeft
+    //         colorLeft: this.props.colorLeft
+    //     })
+    // }
+    // shouldComponentUpdate(){
+    //     this.setState({
+    //         colorLeft: this.props.colorLeft,
+    //         locationLeftDropDown: this.props.locationLeftDropDown
+    //     })
+    // }
+    go = ()=>{
+        // this.forceUpdate()
+        // this.setState({
+        //     colorLeft: this.props.colorLeft,
+        //     locationLeftDropDown: this.props.locationLeftDropDown
+        // })
+        // console.log(this.state.locationLeftDropDown)
+    }
+    render(){
+        let leftEyeClient = this.state.pesViewLeft.map((view, i)=>{
+            return <div
+                key={i}
+                view={view}
+                id={view.id}
+                className={view.className}
+                style={view.id === this.props.locationLeftDropDown ? {backgroundColor: this.props.colorLeft} : {backgroundColor: 'black'}}
+            ></div>
         })
-    }
-    selectLeft = (e) => {
-        let goo = {backgroundColor: this.props.colorLeft}
-        this.setState({
-            style: goo
-        })
-      
-    }
-
-    render() {
         return(
-            <div>
-                <div id="container-clientleft">
-                    <div id="container-lefty">
-                        <div id="Left: 3 o'Clock" className="lefty" style={this.state.style} onChange={this.selectLeft}></div>
-                        <div id="Left: 4 o'Clock" className="lefty" style={this.state.style} onChange={this.selectLeft}></div>
-                        <div id="Left: 5 o'Clock" className="lefty" style={this.state.style} onChange={this.selectLeft}></div>
-                        <div id="Left: 6 o'Clock" className="lefty" style={this.state.style} onChange={this.selectLeft}></div>
-                        <div id="Left: 7 o'Clock" className="lefty" style={this.state.style} onChange={this.selectLeft}></div>
-                        <div id="Left: 8 o'Clock" className="lefty" style={this.state.style} onChange={this.selectLeft}></div>
-                        <div id="Left: 9 o'Clock" className="lefty" style={this.state.style} onChange={this.selectLeft}></div>
-                        <div id="Left: 10 o'Clock" className="lefty" style={this.state.style} onChange={this.selectLeft}></div>
-                        <div id="Left: 11 o'Clock" className="lefty" style={this.state.style} onChange={this.selectLeft}></div>
-                        <div id="Left: 12 o'Clock" className="lefty" style={this.state.style} onChange={this.selectLeft}></div>
-                        <div id="Left: 1 o'Clock" className="lefty" style={this.state.style} onChange={this.selectLeft}></div>
-                        <div id="Left: 2 o'Clock" className="lefty" style={this.state.style} onChange={this.selectLeft}></div>
-                    </div>
+            <div id="container-lefter">
+                <div id="container-left">
+                    {leftEyeClient}
                 </div>
+                <button onClick={this.go}>Send</button>
             </div>
         )
     }

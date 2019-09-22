@@ -3,8 +3,11 @@ import ClientViewLeft from '../../components/clientView/clientViewLeft/clientVie
 
 function mapStateToProps(state) {
     return {
-        locationLeft: state.locationLeft,
-        colorLeft: state.colorLeft
+        pesViewLeft: state.pesViewLeft,
+        locationLeftDropDown: state.locationLeftDropDown,
+        colorLeft: state.colorLeft,
+
+
     }
 }
 
