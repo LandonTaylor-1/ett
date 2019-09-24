@@ -1,17 +1,11 @@
 import {connect} from 'react-redux';
 import ResultLeft from '../../components/results/resultLeft';
-import {setPesViewLeft} from '../../actions/index';
 
 function mapStateToProps(state) {
     return {
-        locationLeft: state.locationLeft,
+        locationLeftDropDown: state.locationLeftDropDown,
         colorLeft: state.colorLeft
     }
 }
 
-const mapDispatchToProps = {
-    setColorLeft: setPesViewLeft,
-    // setLocationLeft: setPesViewLeft
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ResultLeft);
+export default connect(mapStateToProps)(ResultLeft);

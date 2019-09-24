@@ -27,8 +27,9 @@ io.on('connection', function(socket){
   socket.on('disconnect', function(){
     console.log('User Disconnected');
   });
-  socket.on('example_message', function(msg){
-    console.log('message: ' + msg);
+  socket.on('pes', function(data){
+    console.log('pes: ' + data);
+    io.sockets.emit('pes', data)
   });
 });
 io.listen(3003);

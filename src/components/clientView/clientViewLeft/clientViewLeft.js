@@ -5,6 +5,7 @@ import 'whatwg-fetch';
 import openSocket from 'socket.io-client';
 const socket = openSocket('http://localhost:3003');
 
+
 class ClientViewLeft extends React.Component {
     constructor(props){
         super(props);
@@ -12,15 +13,16 @@ class ClientViewLeft extends React.Component {
             pesViewLeft: this.props.pesViewLeft,
             // colorLeft: this.props.colorLeft,
             // locationLeftDropDown: this.props.locationLeftDropDown
+            response: {}
         }
         this.sendSocketIO = this.sendSocketIO.bind(this);
-
     }
     // componentDidMount(){
     //     this.setState({
     //         pesViewLeft: this.props.pesViewLeft
     //         colorLeft: this.props.colorLeft
     //     })
+        
     // }
     // shouldComponentUpdate(){
     //     this.setState({
@@ -41,18 +43,25 @@ class ClientViewLeft extends React.Component {
         .catch(console.log)
     }
     sendSocketIO() {
-        socket.emit('example_message', 'demo');
+        socket.emit('pes', JSON.stringify({
+            location: this.props.locationLeftDropDown,
+            color: this.props.colorLeft
+        }));
+        socket.on('pes', (data) => {this.setState({response: JSON.parse(data)})})
     }
     render(){
-        let leftEyeClient = this.state.pesViewLeft.map((view, i)=>{
-            return <div
-                key={i}
-                view={view}
-                id={view.id}
-                className={view.className}
-                style={view.id === this.props.locationLeftDropDown ? {backgroundColor: this.props.colorLeft} : {backgroundColor: 'black'}}
-            ></div>
-        })
+        // let leftEyeClient = "";
+        
+            let leftEyeClient = this.state.pesViewLeft.map((view, i)=>{
+                
+                return <div
+                    key={i}
+                    view={view}
+                    id={view.id}
+                    className={view.className}
+                    style={view.id === this.state.response.location ? {backgroundColor: this.state.response.color} : {backgroundColor: 'black'}}
+                ></div>
+            })
         return(
             <div id="container-lefter">
                 <div id="container-left">

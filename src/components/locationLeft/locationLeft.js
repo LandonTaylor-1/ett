@@ -77,4 +77,4 @@ class LocationLeft extends React.Component {
 //     )
 // }
 
-export default LocationLeft;
+// export default LocationLeft;

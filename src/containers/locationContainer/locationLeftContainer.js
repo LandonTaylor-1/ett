@@ -1,16 +1,16 @@
 import {connect} from 'react-redux';
 import LocationLeft from '../../components/locationLeft/locationLeft';
-import {setLocationLeft} from '../../actions/index';
+// import {setLocationLeft} from '../../actions/index';
 
-function mapStateToProps(state) {
-    return {
-        pesViewLeft: state.pesViewLeft
-    }
-}
+// function mapStateToProps(state) {
+//     return {
+//         pesViewLeft: state.pesViewLeft
+//     }
+// }
 
-const mapDispatchToProps = {
-    setLeft: setLocationLeft,
-    // setLeftIKey: setLocationLeft
-}
+// const mapDispatchToProps = {
+//     setLeft: setLocationLeft,
+//     // setLeftIKey: setLocationLeft
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LocationLeft);
+// export default connect(mapStateToProps)(LocationLeft);

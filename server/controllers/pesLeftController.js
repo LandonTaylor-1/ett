@@ -3,7 +3,8 @@ const PesLeft = require('../models/pesLeftModel');
 exports.create = function create(req,res) {
     let item = {
         location: req.body.location,
-        color: req.body.color
+        color: req.body.color,
+        level: req.body.level
     };
     let newPesLeft = new PesLeft(item)
     newPesLeft.save();
