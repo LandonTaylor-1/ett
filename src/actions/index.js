@@ -6,14 +6,6 @@ export function setColorLeft(colorLeft) {
   }
 }
 
-export const SET_LOCATION_LEFT_DROP_DOWN = "SET_LOCATION_LEFT_DROP_DOWN";
-export function setLocationLeftDropDown(locationLeftDropDown) {
-  return {
-    type:SET_LOCATION_LEFT_DROP_DOWN,
-    value:locationLeftDropDown
-  }
-}
-
 export const SET_LOCATION_LEFT = "SET_LOCATION_LEFT";
 export function setLocationLeft(locationLeft) {
   return {
@@ -43,6 +35,29 @@ export function setPesViewLeft(pesViewColorLeft) {
   return {
     type:SET_PES_VIEW_LEFT,
     value:pesViewColorLeft,
-    // value2:pesViewLocationLeft
+  }
+}
+
+export const SET_PES_VIEW_RIGHT = "SET_PES_VIEW_RIGHT";
+export function setPesViewRight(pesViewColorRight) {
+  return {
+    type:SET_PES_VIEW_RIGHT,
+    value:pesViewColorRight,
+  }
+}
+
+export const SET_ADMIN = "SET_ADMIN";
+export function setAdmin(admin) {
+  return {
+    type:SET_ADMIN,
+    value:admin,
+  }
+}
+
+export const SET_CLIENT = "SET_CLIENT";
+export function setClient(client) {
+  return {
+    type:SET_CLIENT,
+    value:client,
   }
 }

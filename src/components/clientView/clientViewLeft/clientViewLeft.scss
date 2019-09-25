@@ -28,7 +28,7 @@
     }
 }
   
-#container-lefty {
+#container-left {
     @include on-circle($item-count: 12, $circle-size: 320px, $item-size: 20px); 
     margin: 1em auto 0;
     
@@ -41,19 +41,12 @@
     transition: .15s;
     }
 }
-
-#container-clientleft {
-    display: inline-block;
-    background-color: black;
-    align-items: center;
-    width: 340px;
-    height: 340px;
-    border: 1px white solid;
-}
-
-.lefty {
-    background-color: white;
-    height: 10px;
-    width: 20px;
-    border-radius: 15%;
+#container-lefter {
+  display: inline-block;
+  background-color: black;
+  align-items: center;
+  width: 340px;
+  height: 340px;
+  border: 1px white solid;
+  border-style: solid hidden solid solid;
 }

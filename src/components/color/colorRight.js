@@ -8,6 +8,7 @@ function ColorRight(props) {
                     props.setRight(e.target.value);
                 }
             }}>
+                <option>Choose a Color</option>
                 <option value="White">White</option>
                 <option value="Red" style={{backgroundColor: 'red'}}>Red</option>
                 <option value="Orange" style={{backgroundColor: 'orange'}}>Orange</option>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function LocationLeftDropDown(props) {
+function LocationLeft(props) {
     return (
         <div>Location: 
             <select onChange={(e)=>{
@@ -25,4 +25,4 @@ function LocationLeftDropDown(props) {
         </div>
     );
   }
-  export default LocationLeftDropDown;
+  export default LocationLeft;

@@ -4,10 +4,9 @@ import ClientViewLeft from '../../components/clientView/clientViewLeft/clientVie
 function mapStateToProps(state) {
     return {
         pesViewLeft: state.pesViewLeft,
-        locationLeftDropDown: state.locationLeftDropDown,
+        locationLeft: state.locationLeft,
         colorLeft: state.colorLeft,
-
-
+        client: state.client
     }
 }
 

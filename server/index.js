@@ -27,9 +27,13 @@ io.on('connection', function(socket){
   socket.on('disconnect', function(){
     console.log('User Disconnected');
   });
-  socket.on('pes', function(data){
-    console.log('pes: ' + data);
-    io.sockets.emit('pes', data)
+  socket.on('pesLeft', function(data){
+    console.log('pesLeft: ' + data);
+    io.sockets.emit('pesLeft', data)
+  });
+  socket.on('pesRight', function(data){
+    console.log('pesRight: ' + data);
+    io.sockets.emit('pesRight', data)
   });
 });
 io.listen(3003);

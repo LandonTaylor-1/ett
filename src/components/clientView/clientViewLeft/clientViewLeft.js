@@ -1,77 +1,92 @@
 import React from 'react';
-import './clientViewLeft.css';
 import './clientViewLeft.scss';
 import 'whatwg-fetch';
 import openSocket from 'socket.io-client';
 const socket = openSocket('http://localhost:3003');
 
-
 class ClientViewLeft extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            pesViewLeft: this.props.pesViewLeft,
-            // colorLeft: this.props.colorLeft,
-            // locationLeftDropDown: this.props.locationLeftDropDown
-            response: {}
+            response: {},
+            display: []
         }
-        this.sendSocketIO = this.sendSocketIO.bind(this);
     }
-    // componentDidMount(){
-    //     this.setState({
-    //         pesViewLeft: this.props.pesViewLeft
-    //         colorLeft: this.props.colorLeft
-    //     })
-        
-    // }
-    // shouldComponentUpdate(){
-    //     this.setState({
-    //         colorLeft: this.props.colorLeft,
-    //         locationLeftDropDown: this.props.locationLeftDropDown
-    //     })
-    // }
-    go = ()=>{
-        fetch('/pesleft', {
-            method: 'POST',
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({location: this.props.locationLeftDropDown, color: this.props.colorLeft || 'White'})
-        })
-        .then(res=>res.json())
-        .catch(console.log)
-    }
-    sendSocketIO() {
-        socket.emit('pes', JSON.stringify({
-            location: this.props.locationLeftDropDown,
+    componentDidMount(){
+        socket.emit('pesLeft', JSON.stringify({
+            location: this.props.locationLeft,
             color: this.props.colorLeft
         }));
-        socket.on('pes', (data) => {this.setState({response: JSON.parse(data)})})
+        socket.on('pesLeft', (data) => {this.setState({response: JSON.parse(data)})})
+    }
+    pesLeft = () => {
+        let content =
+            <div
+                key={this.state.display.length + 1}
+                style={{backgroundColor: this.props.colorLeft}}>
+                    {this.state.display.length + 1}.) - {this.props.locationLeft} {this.props.colorLeft || "White"} Level:
+                    <select onChange={(e)=>{
+                        fetch('/pesleft', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                location: this.props.locationLeft,
+                                color: this.props.colorLeft || 'White',
+                                level: e.target.value,
+                                name: this.props.client
+                            })
+                        })
+                        .then(res=>res.json())
+                        .catch(console.log)
+                        }
+                    }>
+                        <option value='10'>10</option>
+                        <option value='9'>9</option>
+                        <option value='8'>8</option>
+                        <option value='7'>7</option>
+                        <option value='6'>6</option>
+                        <option value='5'>5</option>
+                        <option value='4'>4</option>
+                        <option value='3'>3</option>
+                        <option value='2'>2</option>
+                        <option value='1'>1</option>
+                        <option value='0'>0</option>
+                    </select>
+            </div>
+        const newContent = [content, ...this.state.display];
+        this.setState({
+            display: newContent
+        })
+        socket.emit('pesLeft', JSON.stringify({
+            location: this.props.locationLeft,
+            color: this.props.colorLeft
+        }));
+        socket.on('pesLeft', (data) => {this.setState({response: JSON.parse(data)})})
     }
     render(){
-        // let leftEyeClient = "";
-        
-            let leftEyeClient = this.state.pesViewLeft.map((view, i)=>{
-                
-                return <div
-                    key={i}
-                    view={view}
-                    id={view.id}
-                    className={view.className}
-                    style={view.id === this.state.response.location ? {backgroundColor: this.state.response.color} : {backgroundColor: 'black'}}
-                ></div>
-            })
+        let leftEyeView = this.props.pesViewLeft.map((view, i)=>{
+            return <div
+                key={i}
+                view={view}
+                id={view.id}
+                className={view.className}
+                style={view.id === this.state.response.location ? {backgroundColor: this.state.response.color} : {backgroundColor: 'black'}}
+            ></div>
+        })
         return(
+        <div>
+            <div>
+                <button onClick={this.pesLeft} style={this.props.display !== 1 ? {visibility: 'hidden'} : {visibility: 'visible'}}>Send Left PES</button>
+                {this.state.display}
+            </div>
             <div id="container-lefter">
                 <div id="container-left">
-                    {leftEyeClient}
-                </div>
-                <button onClick={this.go}>Send</button>
-                <div>
-                    <button onClick={this.sendSocketIO}>Send Socket.io</button>
+                    {leftEyeView}
                 </div>
             </div>
+        </div>
         )
     }
 }
