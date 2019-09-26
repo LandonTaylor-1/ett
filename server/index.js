@@ -37,4 +37,4 @@ io.on('connection', function(socket){
     io.sockets.emit('pesRight', data)
   });
 });
-io.listen(3003);
+io.listen(process.env.PORT || 3003);
