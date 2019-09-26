@@ -24,7 +24,7 @@ class ClientViewRight extends React.Component {
             <div
                 key={this.state.display.length + 1}
                 style={{backgroundColor: this.props.colorRight}}>
-                    {this.state.display.length + 1}.) - {this.props.locationRight} {this.props.colorRight || "White"} Level:
+                    {this.state.display.length + 1}.) - {this.props.locationRight} - {this.props.colorRight || "White"} - Anxiety:
                     <select onChange={(e)=>{
                         fetch('/pesright', {
                             method: 'POST',
@@ -42,6 +42,7 @@ class ClientViewRight extends React.Component {
                         .catch(console.log)
                         }
                     }>
+                        <option>Level</option>
                         <option value='10'>10</option>
                         <option value='9'>9</option>
                         <option value='8'>8</option>

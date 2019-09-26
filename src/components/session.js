@@ -3,36 +3,40 @@ import React from 'react';
 class Session extends React.Component {
     state = {
         pastClient: "",
-        session: {
-            'location': "Left: 3 o'Clock",
-            'color': 'blue',
-            'name': 'landon',
-            'level': '5'
-        }
+        sessionLeft: [],
+        sessionRight: []
     }
     componentDidMount(){
         
     }
 
     render(){
-        debugger
-            let viewSession = this.state.session.map((i, client)=>{
-                return <div
-                    key={i}
-                    style={{backgroundColor: client.color}}
-                    >
-                        {i+1}.) - {client.location} {client.color || "White"} Level: {client.level}
-                    </div>})
-        
+        let viewSessionLeft = this.state.sessionLeft.map((client, i)=>{
+            return <div
+                key={i}
+                style={{backgroundColor: client.color}}
+                >
+                    {i+1}.) - {client.location} - {client.color || "White"} - Anxiety: {client.level}
+                </div>})
+        let viewSessionRight = this.state.sessionRight.map((client, i)=>{
+            return <div
+                key={i}
+                style={{backgroundColor: client.color}}
+                >
+                    {i+1}.) - {client.location} - {client.color || "White"} - Anxiety: {client.level}
+                </div>})
         return(
             <div>
                 <input onChange={(e)=>{this.setState({pastClient: e.target.value.toLowerCase()})}} />
                 <button onClick={()=>{
-                    fetch('/pesleft/landon')
+                    fetch(`/pesleft/${this.state.pastClient}`)
                     .then(res=>res.json())
-                    .then(session=>{this.setState({session: session})})}}>
+                    .then(session=>{this.setState({sessionLeft: session})});
+                    fetch(`/pesright/${this.state.pastClient}`)
+                    .then(res=>res.json())
+                    .then(session=>{this.setState({sessionRight: session})})}}>
                 View Session</button>
-                {viewSession}
+                {viewSessionLeft}{viewSessionRight}
             </div>
         )
     }
