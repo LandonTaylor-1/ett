@@ -2,7 +2,7 @@ import React from 'react';
 import './clientViewLeft.scss';
 import 'whatwg-fetch';
 import openSocket from 'socket.io-client';
-const socket = openSocket('https://veet.herokuapp.com');
+const socket = openSocket('http://localhost:3003');
 
 class ClientViewLeft extends React.Component {
     constructor(props){
