@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require('mongoose');
-const app = express().createServer(express.logger());
+const app = express()
 const bodyParser = require("body-parser");
 require("dotenv").config();
 
