@@ -21,8 +21,8 @@ app.listen(port, () => {
   console.log(`Listening on port:${port}`);
 });
 
-// const http = require('http').Server(app);
-const io = require('socket.io').listen(app)
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 io.on('connection', function(socket){
   console.log('a user connected');
   socket.on('disconnect', function(){
@@ -37,6 +37,7 @@ io.on('connection', function(socket){
     io.sockets.emit('pesRight', data)
   });
 });
+// io.listen(3003);
 
 io.configure(function () { 
   io.set("transports", ["xhr-polling"]); 
