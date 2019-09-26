@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require('mongoose');
-const app = express();
+const app = express().createServer(express.logger());
 const bodyParser = require("body-parser");
 require("dotenv").config();
 
@@ -21,8 +21,8 @@ app.listen(port, () => {
   console.log(`Listening on port:${port}`);
 });
 
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
+// const http = require('http').Server(app);
+const io = require('socket.io').listen(app)
 io.on('connection', function(socket){
   console.log('a user connected');
   socket.on('disconnect', function(){
@@ -37,4 +37,8 @@ io.on('connection', function(socket){
     io.sockets.emit('pesRight', data)
   });
 });
-io.listen(3003);
+
+io.configure(function () { 
+  io.set("transports", ["xhr-polling"]); 
+  io.set("polling duration", 10); 
+});

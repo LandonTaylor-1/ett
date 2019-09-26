@@ -1,8 +1,8 @@
 import React from 'react';
 import './clientViewRight.scss';
 import 'whatwg-fetch';
-import openSocket from 'socket.io-client';
-const socket = openSocket('http://localhost:3003');
+import io from 'socket.io-client';
+const socket = io.connect(window.location.hostname);
 
 class ClientViewRight extends React.Component {
     constructor(props){
