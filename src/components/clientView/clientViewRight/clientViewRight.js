@@ -2,6 +2,7 @@ import React from 'react';
 import './clientViewRight.scss';
 import 'whatwg-fetch';
 import io from 'socket.io-client';
+// const socket = io.connect('https://veet.herokuapp.com');
 const socket = io('http://localhost:3003');
 
 class ClientViewRight extends React.Component {
