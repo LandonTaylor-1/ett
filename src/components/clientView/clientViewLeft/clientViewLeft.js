@@ -2,7 +2,7 @@ import React from 'react';
 import './clientViewLeft.scss';
 import 'whatwg-fetch';
 import io from 'socket.io-client';
-const socket = io.connect(window.location.hostname);
+const socket = io('http://localhost:3003');
 
 class ClientViewLeft extends React.Component {
     constructor(props){

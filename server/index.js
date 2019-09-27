@@ -14,7 +14,7 @@ app.use(pesRightRoutes);
 
 mongoose.set("debug", true);
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.mongodburi, {useNewUrlParser: true});
+mongoose.connect('mongodb+srv://user-1:12345@aca-practice-jd9cz.mongodb.net/ett?retryWrites=true&w=majority', {useNewUrlParser: true});
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
@@ -37,9 +37,9 @@ io.on('connection', function(socket){
     io.sockets.emit('pesRight', data)
   });
 });
-// io.listen(3003);
+io.listen(3003);
 
-io.configure(function () { 
-  io.set("transports", ["xhr-polling"]); 
-  io.set("polling duration", 10); 
-});
+// io.configure(function () { 
+//   io.set("transports", ["xhr-polling"]); 
+//   io.set("polling duration", 10); 
+// });
